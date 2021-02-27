@@ -30,11 +30,11 @@ X2 = X(length(X1)+1:end);
 n = length(X1)/P; %length of each segment in X1
 Su = 0.1; %mean weight
 Ss = 0.8; %std weight
-dm = 0.01; %min quantization step; choose from {0.5,0.6,0.7}
-dM = 0.1; %max quantization step;
+dm = 0.01; %min quantization step
+dM = 0.1; %max quantization step
 
 M = 32; %dimensions of square watermark
-I = imread('testpat1.png'); %watermark image; %circlesBrightDark.png, testpat1.png, %
+I = imread('testpat1.png'); %watermark image; %circlesBrightDark.png, testpat1.png
 I = imresize(I, [M M]);
 W = imbinarize(I);
 figure
@@ -65,7 +65,6 @@ for m=1:P
 end
 
 %WATERMARK EMBEDDING
-
 [a,d] = dwt(X2,'haar');
 coeff = a';%obtain low level coefficients for X2
 u = sqrt(length(coeff)/(M*M)); %dimension of 2D matrix
@@ -180,12 +179,3 @@ end
 
 %imshow(reshape(watermark_ext,M,M)')
         
-    
-    
-    
-
-
-        
-
-
-
